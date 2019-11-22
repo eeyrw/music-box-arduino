@@ -89,8 +89,10 @@ loopSynth:
 	cpi loopIndex,POLY_NUM
 	breq loopSynth_end
 	ldd t2l,Y+pEnvelopeLevel ; Load evnvlopelevel to t2l
+#ifdef RUN_TEST	
 	cp t2l,zero
 	breq loopSynthContinue
+#endif		
 	ldd zl,Y+pWavetablePos_int_l ; Get a sample by pWavetablePos_int and save to t0l
 	ldd zh,Y+pWavetablePos_int_h
 	ldi t0l,lo8(WaveTable_Celesta_C5)
@@ -98,15 +100,17 @@ loopSynth:
 	add zl,t0l
 	adc zh,t0h
 	lpm t0l,Z
+#ifdef RUN_TEST
 	std Y+pSampleVal,t0l
-
-
+#endif
 	mulsu t0l,t2l ;r1:r0=sample*evnvlopelevel
 	clr r0 ;(r1:r0)/255
 	sbrc r1,7 ;skip if bit 7(sign bit of signed 16) of r1 is 0
 	com r0 ;~r0=0xFF
+#ifdef RUN_TEST	
 	std Y+pVal,r1
 	std Y+(pVal+1),r0
+#endif	
 	add mixOutl,r1 ; mixOut+=(r1:r0)>>8
 	clr r1 ; Always keep r1(zero)=0
 	adc mixOuth,r0

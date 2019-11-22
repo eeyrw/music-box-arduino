@@ -89,6 +89,7 @@ PlayNoteTimingCheck:
 ;     ld a,#0xff
 ; Player* player r25:r24
 movw zl,arg0l
+cli
 ldd t0l,Z+pCurrentTick_b1
 ldd t0h,Z+pLastScoreTick_b0
 cp t0l,t0h
@@ -98,9 +99,10 @@ cpc t0l,t0h
 ldd t0l,Z+pCurrentTick_b3
 ldd t0h,Z+pLastScoreTick_b2
 cpc t0l,t0h
-ldi r24,0
-brcs playNoteTimingCheckEnd
-ldi r24,255
+sei
+clr arg0l
+brlo playNoteTimingCheckEnd
+com arg0l
 playNoteTimingCheckEnd:
     ret
 
@@ -121,6 +123,11 @@ ldd t0l,Y+pScorePointer
 ldd t0h,Y+(pScorePointer+1)
 movw zl,t0l
 lpm t0l,Z
+sec
+adc zl,zero
+adc zh,zero
+std Y+pScorePointer,zl
+std Y+(pScorePointer+1),zh
 
 ldd t0h,Y+pLastScoreTick_b0
 add t0h,t0l
