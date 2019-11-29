@@ -2,11 +2,11 @@
 #define MusicBox_h
 
 #if ARDUINO >= 100
-  #include "Arduino.h"
+#include "Arduino.h"
 #else
-  #include "WProgram.h"
-  #include "pins_arduino.h"
-  #include "WConstants.h"
+#include "WProgram.h"
+#include "pins_arduino.h"
+#include "WConstants.h"
 #endif
 
 #include <avr/io.h>
@@ -14,16 +14,18 @@
 #include <avr/interrupt.h>
 #include "Player.h"
 
-class MusicBox {
-  public:
-    MusicBox();
-    
-    void init();
-    void play(const unsigned char* score);
-    void process();
+class MusicBox
+{
+public:
+  MusicBox();
 
-  private:
-    Player mainPlayer;
+  void init();
+  void play(const unsigned char *score);
+  void stop();
+  void process();
+
+private:
+  Player mainPlayer;
 };
 
 #endif

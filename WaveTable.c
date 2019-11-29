@@ -1,9 +1,9 @@
 #include <stdint.h>
-#include <WaveTable_Celesta_C5.h>
+#include <WaveTable.h>
 #include <avr/pgmspace.h>
 // Sample's base frequency: 523.629906 Hz
 // Sample's sample rate: 32000 Hz
-const int8_t WaveTable_Celesta_C5[WAVETABLE_CELESTA_C5_LEN] PROGMEM ={
+const int8_t WaveTable[WAVETABLE_LEN] PROGMEM ={
 // Attack Samples:
      0,     0,     0,     0,     0,     0,     0,     1,     0,     0,
      2,    -1,     1,     3,    -1,     5,     3,     0,     8,     0,
@@ -269,7 +269,7 @@ const int8_t WaveTable_Celesta_C5[WAVETABLE_CELESTA_C5_LEN] PROGMEM ={
    -19,   -19,   -19,   -20,   -18,   -17,   -19,   -19,   -20,   -21,
    -18,   -17,   -16,   -12,   -10,    -6,    -3,    -1,};
 
-const uint16_t WaveTable_Celesta_C5_Increment[] PROGMEM ={
+const uint16_t WaveTable_Increment[] PROGMEM ={
      3,     4,     4,     4,     5,     5,     5,     5,     6,     6,
      7,     7,     7,     8,     8,     9,    10,    10,    11,    11,
     12,    13,    14,    15,    15,    16,    17,    18,    20,    21,
