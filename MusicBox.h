@@ -18,14 +18,13 @@ class MusicBox
 {
 public:
   MusicBox();
-
-  void init();
   void play(const unsigned char *score);
   void stop();
   void process();
 
 private:
   Player mainPlayer;
+  bool needHwInit;
 };
 
 #endif

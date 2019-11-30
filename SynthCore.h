@@ -5,7 +5,7 @@
 extern "C" {
 #endif
 
-#define POLY_NUM 5
+#define POLY_NUM 6
 #define ENVELOP_LEN 256
 
 #define SoundUnitSize 10
