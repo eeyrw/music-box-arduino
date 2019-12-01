@@ -11,7 +11,7 @@ void PlayerProcess(Player *player)
 
     uint8_t temp;
 
-    if (decayGenTick >= 150)
+    if (decayGenTick >= DECAY_TIME_FACTOR)
     {
         GenDecayEnvlopeAsm();
         decayGenTick = 0;
@@ -38,7 +38,7 @@ void PlayerProcess(Player *player)
     }
 }
 
-void PlayerPlay(Player *player, const uint8_t *score)
+void PlayerPlay(Player *player, uint8_t *score)
 {
     player->lastScoreTick = 0;
     player->scorePointer = score;

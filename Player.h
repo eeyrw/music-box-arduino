@@ -1,10 +1,6 @@
 #ifndef __PLAYER_H__
 #define __PLAYER_H__
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 #define pStatus 0
 #define pLastScoreTick_b0 1
 #define pLastScoreTick_b1 2
@@ -17,6 +13,10 @@ extern "C" {
 #include <stdint.h>
 #include "SynthCore.h"
 #include <avr/pgmspace.h>
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 enum PLAY_STATUS
 {
@@ -35,15 +35,16 @@ typedef struct _Player
 
 extern void PlayerInit(Player *player, Synthesizer *synthesizer);
 extern void PlayerProcess(Player *player);
-extern void PlayerPlay(Player *player, const uint8_t *score);
+extern void PlayerPlay(Player *player, uint8_t *score);
 extern uint8_t PlayNoteTimingCheck(Player *player);
 extern void PlayUpdateNextScoreTick(Player *player);
 
 extern Player mainPlayer;
-#endif
-
 
 #ifdef __cplusplus
 } //end extern "C"
 #endif
+
+#endif
+
 #endif

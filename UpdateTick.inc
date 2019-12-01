@@ -1,3 +1,4 @@
+#include "SynthCore.h"
 #include "AsmCommon.h"
 
 .section .bss
@@ -25,7 +26,7 @@ UpdateTick:
 	sts currentTick+3,t0l
 
 	lds t0l,decayGenTick
-	cpi t0l,150
+	cpi t0l,DECAY_TIME_FACTOR
 	brsh updateDecayGenTickEnd ; BRSH – Branch if Same or Higher (Unsigned)
 	inc t0l
 	sts decayGenTick,t0l

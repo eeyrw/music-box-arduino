@@ -14,6 +14,7 @@
 	clr mixOutl
 	clr mixOuth
 	clr mixOute	
+	clr zero
 	ldi yl,lo8(synthForAsm)
 	ldi yh,hi8(synthForAsm)
 	loopSynth:
@@ -37,8 +38,8 @@
 		mov t0h,zh
 		adc t0h,zero
 
-		cpi t0l,lo8(WAVETABLE_LEN+1) ; "+1" is to realize "<="
-		ldi t1l,hi8(WAVETABLE_LEN+1)
+		cpi t0l,lo8(WAVETABLE_LEN)
+		ldi t1l,hi8(WAVETABLE_LEN)
 		cpc t0h,t1l
 		brlo branch0_end
 		subi t0l,lo8(WAVETABLE_LOOP_LEN)

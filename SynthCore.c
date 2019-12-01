@@ -63,7 +63,7 @@ void SynthC(void)
                              ((uint32_t)soundUnionList[i].combine.wavetablePos_int<<8); 
 
         uint16_t waveTablePosInt= waveTablePos>>8;
-        if(waveTablePosInt>WAVETABLE_CELESTA_C5_LEN)
+        if(waveTablePosInt>=WAVETABLE_CELESTA_C5_LEN)
            waveTablePosInt-=WAVETABLE_CELESTA_C5_LOOP_LEN;
         soundUnionList[i].combine.wavetablePos_int= waveTablePosInt;
         soundUnionList[i].combine.wavetablePos_frac=0xFF&waveTablePos;
